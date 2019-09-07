@@ -1,1 +1,8 @@
-# test hhhhhhhhhhhhhhhhhhh
+AWSTemplateFormatVersion: '2010-09-09'
+Description: create a single S3 bucket
+
+Resources:
+  SampleBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: sample-bucket-0827-cc999999999
