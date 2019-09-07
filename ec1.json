@@ -1,0 +1,38 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Parameters": {
+        "InstanceType": {
+            "Description": "Name of Parameter Store parameter to define the instance type.",
+            "Type": "AWS::SSM::Parameter::Value<String>",
+            "Default": "/application/stage/instancetype"
+        },
+        "Subnet": {
+            "Type": "AWS::SSM::Parameter::Value<String>",
+            "Default": "/application/stage/subnet"
+        },
+        "KeyName": {
+            "Type": "AWS::SSM::Parameter::Value<AWS::EC2::KeyPair::KeyName>",
+            "Default": "santu"
+        }
+    },
+    "Resources": {
+        "WebInstance": {
+            "Type": "AWS::EC2::Instance",
+            "Properties": {
+                "InstanceType": {
+                    "Ref": "InstanceType"
+                },
+                "ImageId": "ami-0bbc25e23a7640b9b",
+                "KeyName": {
+                    "Ref": "KeyName"
+                },
+                "SecurityGroupIds": [
+                    "sg-0cbfc2080b237ed9a"
+                ],
+                "SubnetId": {
+                    "Ref": "Subnet"
+                }
+            }
+        }
+    }
+}
